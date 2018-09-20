@@ -60,8 +60,8 @@ c=sdpvar(1,1,'full');
 
 Y=sdpvar(m,n,'full');
 
-M=[Q+Q'+Lambda*P, -Q'*H'-Y'*B', -Y'*B';
-   (-Q'*H'-Y'*B')', -exp(-mu)*P*Lambda, zeros(n,n);
+M=[Q+Q'+Lambda*P, -Q'*H-Y'*B', -Y'*B';
+   (-Q'*H-Y'*B')', -exp(-mu)*P*Lambda, zeros(n,n);
    (-Y'*B')', zeros(n,n),-theta*eye(n)];
 
 Optimization=[P eye(n); eye(n) c*eye(n)];
@@ -77,7 +77,7 @@ if(solution.problem==0)
 P=double(P);
 
 Q=double(Q);
-K=double(Y)*inv(Q);
+K=(inv(Q'*B))*double(Y);
 
 theta=double(theta);
 
@@ -103,8 +103,8 @@ c=sdpvar(1,1,'full');
 
 Y=sdpvar(m,n,'full');
 
-M=[Q+Q'+Lambda*P, -Q'*H'-Y'*B', -Y'*B';
-   (-Q'*H'-Y'*B')', -exp(-mu)*P*Lambda, zeros(n,n);
+M=[Q+Q'+Lambda*P, -Q'*H-Y'*B', -Y'*B';
+   (-Q'*H-Y'*B')', -exp(-mu)*P*Lambda, zeros(n,n);
    (-Y'*B')', zeros(n,n),-theta*eye(n)];
 
 Optimization=[P eye(n); eye(n) c*eye(n)];
@@ -120,7 +120,7 @@ if(solution.problem==0)
 P=double(P);
 
 Q=double(Q);
-K=double(Y)*inv(Q);
+K=(inv(Q'*B))*double(Y);
 
 theta=double(theta);
 
