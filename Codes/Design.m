@@ -60,9 +60,9 @@ c=sdpvar(1,1,'full');
 
 Y=sdpvar(m,n,'full');
 
-M=[Q+Q'+Lambda*P, -Q'*H-Y'*B', -Y'*B';
-   (-Q'*H-Y'*B')', -exp(-mu)*P*Lambda, zeros(n,n);
-   (-Y'*B')', zeros(n,n),-theta*eye(n)];
+M=[Q+Q'+Lambda*P, -Q'*H-Y, -Y;
+   (-Q'*H-Y)', -exp(-mu)*P*Lambda, zeros(n,n);
+   -Y', zeros(n,n),-theta*eye(n)];
 
 Optimization=[P eye(n); eye(n) c*eye(n)];
 
@@ -103,9 +103,9 @@ c=sdpvar(1,1,'full');
 
 Y=sdpvar(m,n,'full');
 
-M=[Q+Q'+Lambda*P, -Q'*H-Y'*B', -Y'*B';
-   (-Q'*H-Y'*B')', -exp(-mu)*P*Lambda, zeros(n,n);
-   (-Y'*B')', zeros(n,n),-theta*eye(n)];
+M=[Q+Q'+Lambda*P, -Q'*H-Y, -Y;
+   (-Q'*H-Y)', -exp(-mu)*P*Lambda, zeros(n,n);
+   -Y', zeros(n,n),-theta*eye(n)];
 
 Optimization=[P eye(n); eye(n) c*eye(n)];
 
