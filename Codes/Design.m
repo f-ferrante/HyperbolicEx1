@@ -85,7 +85,7 @@ gamma_v(i)=sqrt(theta/min(eig(P)))*exp(mu/2);
 
 
 end
-
+end
 %%
 if(l>1)
     
@@ -130,6 +130,4 @@ end
 end
 
 global H B K Lambda
-
-end
 
